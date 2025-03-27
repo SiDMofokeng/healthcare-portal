@@ -1,0 +1,454 @@
+.sidebar-nav a.active {
+    background: rgba(67, 97, 238, 0.1);
+    border-left: 3px solid var(--primary);
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+      position: fixed;
+      transition: transform 0.3s ease;
+    }
+    .sidebar.mobile-open {
+      transform: translateX(0);
+    }
+  }
+
+  /* Profile Dropdown */
+.user-profile {
+    position: relative;
+    margin-left: auto;
+  }
+  
+  .profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50px;
+    transition: background 0.3s ease;
+  }
+  
+  .profile-trigger:hover {
+    background: rgba(0,0,0,0.05);
+  }
+  
+  .profile-trigger img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 220px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+  
+  .dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .profile-header {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .profile-role {
+    color: #666;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    padding: 5px 0;
+  }
+  
+  .dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  
+  .dropdown-menu li a:hover {
+    background: #f8f9fa;
+  }
+  
+  .dropdown-menu li a i {
+    width: 20px;
+    text-align: center;
+  }
+  
+  .divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 5px 0;
+  }
+  
+  .logout-link {
+    color: #e74c3c !important;
+  }
+
+  /* Notification Badge */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Pulse Animation */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  .pulse {
+    animation: pulse 0.5s ease;
+  }
+
+  /* Mobile Overlay */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .sidebar {
+    z-index: 999;
+  }
+
+  /* Submenu indicators */
+.has-children .collapse-toggle::after {
+    content: '\f078';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .has-children.open .collapse-toggle::after {
+    transform: rotate(180deg);
+  }
+
+  /* Sidebar Structure */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    height: 100vh;
+    position: fixed;
+    transition: transform 0.3s ease;
+  }
+
+  /* Sidebar Navigation Items */
+.sidebar-nav .nav-item {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Icon styling within nav items */
+.sidebar-nav .nav-item i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* Hover & Active States */
+.sidebar-nav .nav-item:hover,
+.sidebar-nav .nav-item.active {
+  background-color: #f5f5f5;
+  color: #000;
+}
+  
+  .sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .sidebar-nav {
+    padding: 15px 0;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #4361ee;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-item:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+  }
+  
+  .nav-item.active {
+    background: rgba(67, 97, 238, 0.2);
+    border-left: 3px solid #4361ee;
+    color: white;
+  }
+  
+  .nav-item i {
+    width: 20px;
+    text-align: center;
+  }
+  
+  .nav-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 15px 0;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+      z-index: 1000;
+    }
+    
+    .sidebar.mobile-open {
+      transform: translateX(0);
+    }
+  }
+
+  /* Appointment List */
+.appointment-item {
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary);
+}
+
+.appointment-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-badge.scheduled {
+    background-color: #007bff;
+    color: white;
+}
+
+.status-badge.completed {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-badge.cancelled {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-badge.no_show {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+/* Calendar Styles */
+#calendar {
+    min-height: 600px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.fc-event {
+    cursor: pointer;
+    border: none;
+    padding: 2px 4px;
+    font-size: 0.85em;
+}
+
+.fc-daygrid-event-dot {
+    display: none;
+}
+
+.fc-toolbar-title {
+    font-size: 1.25em;
+    font-weight: 600;
+}
+
+.fc-button {
+    background: var(--primary) !important;
+    border: none !important;
+    padding: 6px 12px !important;
+}
+
+.fc-button-active {
+    background: var(--dark) !important;
+}
+
+.fc-daygrid-day-number {
+    font-size: 1.1em;
+}
+
+.fc-col-header-cell-cushion {
+    font-weight: 500;
+}
+
+/* Modal Styles */
+#appointment-modal .modal-body {
+    padding: 20px;
+}
+
+#appointment-modal .badge {
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+.badge-primary { background-color: var(--primary); }
+.badge-success { background-color: var(--success); }
+.badge-danger { background-color: var(--danger); }
+.badge-warning { background-color: var(--warning); color: #212529; }
+
+/* Profile Dropdown Container */
+#profile-dropdown {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  width: 240px;
+  padding: 0;
+  position: absolute;
+  top: calc(100% + 5px); /* Slight gap from trigger */
+  right: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* When the dropdown is active, show it with a slide-down effect */
+#profile-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Header with Gradient Background */
+#profile-dropdown .profile-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eaeaea;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  text-align: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#profile-dropdown .profile-header .profile-role {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Dropdown List */
+#profile-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#profile-dropdown ul li {
+  border-bottom: 1px solid #f1f1f1;
+}
+
+#profile-dropdown ul li.divider {
+  border: none;
+  margin: 6px 0;
+}
+
+/* Dropdown Links */
+#profile-dropdown ul li a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#profile-dropdown ul li a i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Hover and Focus Effects for Links */
+#profile-dropdown ul li a:hover,
+#profile-dropdown ul li a:focus {
+  background-color: #f5f5f5;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Special styling for the logout link */
+#profile-dropdown ul li a.logout-link {
+  color: #d9534f;
+  font-weight: 500;
+}
+
+#profile-dropdown ul li a.logout-link:hover,
+#profile-dropdown ul li a.logout-link:focus {
+  background-color: #fdecea;
+}
+
+.notifications {
+  display: none !important;
+}
