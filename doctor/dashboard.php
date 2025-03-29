@@ -92,126 +92,250 @@ function formatPhoneLink($phone) {
 <!-- Add FullCalendar JS -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
-<div class="dashboard-grid">
+<div class="container-fluid py-4">
     
-    <!-- Stat Cards -->
-    <div class="stat-card">
-        <div class="stat-icon bg-primary">
-            <i class="fas fa-calendar-day"></i>
+<div class="row">
+    
+    <!-- Today's Appointments -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow-lg" style="background: linear-gradient(195deg, #4CAF50 0%, #2E7D32 100%);">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8 text-white">
+                        <p class="text-sm mb-1 text-uppercase font-weight-bold opacity-8">Today's Appointments</p>
+                        <h3 class="font-weight-bolder mb-0"><?= $today_appointments ?></h3>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-white shadow-white text-center">
+                            <i class="fas fa-calendar-day text-success opacity-10"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="schedule.php?view=today" class="text-white text-sm font-weight-bold">
+                        View All <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="stat-info">
-            <h3>Today's Appointments</h3>
-            <p><?= $today_appointments ?></p>
-        </div>
-        <a href="schedule.php?view=today" class="stat-link">View <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="stat-card">
-        <div class="stat-icon bg-success">
-            <i class="fas fa-procedures"></i>
+    <!-- Total Patients -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow-lg" style="background: linear-gradient(195deg, #2196F3 0%, #0D47A1 100%);">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8 text-white">
+                        <p class="text-sm mb-1 text-uppercase font-weight-bold opacity-8">Total Patients</p>
+                        <h3 class="font-weight-bolder mb-0"><?= $patient_count ?></h3>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-white shadow-white text-center">
+                            <i class="fas fa-procedures text-primary opacity-10"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="patients.php" class="text-white text-sm font-weight-bold">
+                        My Patients <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="stat-info">
-            <h3>Total Patients</h3>
-            <p><?= $patient_count ?></p>
-        </div>
-        <a href="patients.php" class="stat-link">My Patients <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="stat-card">
-        <div class="stat-icon bg-warning">
-            <i class="fas fa-clock"></i>
+    <!-- Pending Prescriptions -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow-lg" style="background: linear-gradient(195deg, #FF9800 0%, #E65100 100%);">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8 text-white">
+                        <p class="text-sm mb-1 text-uppercase font-weight-bold opacity-8">Pending Prescriptions</p>
+                        <h3 class="font-weight-bolder mb-0">12</h3>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-white shadow-white text-center">
+                            <i class="fas fa-clock text-warning opacity-10"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="prescriptions.php" class="text-white text-sm font-weight-bold">
+                        Review <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="stat-info">
-            <h3>Pending Prescriptions</h3>
-            <p>12</p>
+    </div>
+
+    <!-- Available Slots -->
+    <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow-lg" style="background: linear-gradient(195deg, #9C27B0 0%, #6A1B9A 100%);">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-8 text-white">
+                            <p class="text-sm mb-1 text-uppercase font-weight-bold opacity-8">Available Slots</p>
+                            <h3 class="font-weight-bolder mb-0">5</h3>
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-white shadow-white text-center">
+                                <i class="fas fa-calendar-plus text-purple opacity-10"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="schedule.php" class="text-white text-sm font-weight-bold">
+                            Book Now <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <a href="prescriptions.php" class="stat-link">Review <i class="fas fa-arrow-right"></i></a>
     </div>
 
     <!-- Main Content Cards -->
-    <div class="card full-width">
-        <div class="card-header">
-            <h3>Upcoming Appointments</h3>
-            <div class="card-actions">
-                <button class="btn btn-sm btn-primary">View All</button>
-                <button class="btn btn-sm btn-outline">Print Schedule</button>
-            </div>
-        </div>
-        <div class="card-body collapse">
-            <?php if (count($upcoming_appointments) > 0): ?>
-                <div class="appointments-list">
-                    <?php foreach ($upcoming_appointments as $appt): ?>
-                    <div class="appointment-item">
-                        <div class="appointment-time">
-                            <span class="time"><?= date('g:i A', strtotime($appt['appointment_time'])) ?></span>
-                            <span class="date"><?= date('D, M j', strtotime($appt['appointment_date'])) ?></span>
+    <div class="row mt-4">
+        <div class="col-lg-8 mb-4">
+            <div class="card card-plain border-0 shadow-lg mb-4">
+
+                <!-- Enhanced Card Header -->
+                <div class="card-header p-3" style="background: linear-gradient(195deg, #f8f9fa 0%, #e9ecef 100%); border-bottom: none;">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-0 text-dark font-weight-bold">
+                                <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                                Upcoming Appointments
+                            </h5>
+                            <p class="text-sm text-muted mb-0">Next 5 scheduled visits</p>
                         </div>
-                        <div class="appointment-details">
-                            <h4><?= htmlspecialchars($appt['first_name'] . ' ' . $appt['last_name']) ?></h4>
-                            <p class="reason"><?= htmlspecialchars($appt['reason'] ?? 'No reason provided', ENT_QUOTES, 'UTF-8') ?></p>
-                            <div class="appointment-actions">
-                                <button class="btn btn-sm btn-outline">Start Consultation</button>
-                                <button class="btn btn-sm">View History</button>
-                            </div>
-                        </div>
-                        <div class="appointment-status">
-                            <span class="status-badge <?= $appt['status'] ?>"><?= ucfirst($appt['status']) ?></span>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary px-3">
+                                <i class="fas fa-print me-1"></i> Print
+                            </button>
+                            <button class="btn btn-sm btn-primary px-3">
+                                <i class="fas fa-list me-1"></i> View All
+                            </button>
                         </div>
                     </div>
-                    <?php endforeach; ?>
                 </div>
-            <?php else: ?>
-                <div class="empty-state">
-                    <i class="fas fa-calendar-times"></i>
-                    <p>No upcoming appointments</p>
-                    <a href="schedule.php" class="btn btn-primary">Check Availability</a>
+
+                <div class="card-body px-0 pt-0">
+                    <?php if (count($upcoming_appointments) > 0): ?>
+                        
+                        <div class="list-group list-group-flush">
+                        <?php foreach ($upcoming_appointments as $appt): ?>
+                        <div class="list-group-item border-0 px-0 py-3">
+                            <div class="d-flex align-items-center">
+                            <div class="avatar avatar-sm rounded-circle bg-gradient-primary me-3">
+                                <span class="text-white"><?= strtoupper(substr($appt['first_name'], 0, 1)) ?></span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0"><?= htmlspecialchars($appt['first_name'].' '.$appt['last_name']) ?></h6>
+                                <p class="text-sm text-muted mb-0"><?= htmlspecialchars($appt['reason']) ?></p>
+                            </div>
+                            <div class="text-end" style="margin-right: 15px;">
+                                <span class="badge bg-<?= $appt['status'] === 'confirmed' ? 'success' : 'warning' ?>">
+                                <?= ucfirst($appt['status']) ?>
+                                </span>
+                                <p class="text-sm mb-0 text-muted"><?= date('g:i A', strtotime($appt['appointment_time'])) ?></p>
+                                <p class="text-xs mb-0 text-muted"><?= date('M j, Y', strtotime($appt['appointment_date'])) ?></p>
+                            </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                        </div>
+
+                    <?php else: ?>
+                        <div class="text-center py-4">
+                            <i class="fas fa-calendar-times fa-3x text-gray-300 mb-3"></i>
+                            <h6 class="text-muted">No upcoming appointments</h6>
+                            <a href="schedule.php" class="btn btn-sm btn-primary mt-2">Check Availability</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+                
+            </div>
         </div>
-    </div>
 
-    <!-- Calendar Card -->
-    <div class="card full-width">
-        <div class="card-header">
-            <h3><i class="fas fa-calendar-alt"></i> Appointment Calendar</h3>
-            <button id="new-appointment-btn" class="btn btn-primary">
-                <i class="fas fa-plus"></i> New Appointment
-            </button>
-        </div>
-        <div class="card-body">
-            <!-- This is our calendar container -->
-            <div id="calendar"></div>
-        </div>
-    </div>
+        <div class="col-lg-4 mb-4">
+                <div class="card shadow-lg">
+                    
+                    <!-- Enhanced Calendar Header -->
+                    <div class="card-header p-3" style="background: linear-gradient(195deg, #f8f9fa 0%, #e9ecef 100%);">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-0 text-dark font-weight-bold">
+                                    <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                                    Appointment Calendar
+                                </h5>
+                                <p class="text-sm text-muted mb-0">View and manage your schedule</p>
+                            </div>
+                            <button id="new-appointment-btn" class="btn btn-sm btn-primary px-3">
+                                <i class="fas fa-plus me-1"></i> New Appointment
+                            </button>
+                        </div>
+                    </div>
 
-    <!-- Initialize FullCalendar -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            headerToolbar: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            },
-            events: {
-            url: '../api/doctor_appointments.php',
-            method: 'GET',
-            failure: function() {
-                alert('There was an error while fetching appointments!');
+                    <div class="card-body p-3">
+                        <div id="calendar" style="min-height: 500px;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Initialize FullCalendar -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,listWeek'
+                    },
+                    themeSystem: 'bootstrap5',
+                    events: {
+                        url: '../api/doctor_appointments.php',
+                        method: 'GET',
+                        failure: function() {
+                            alert('There was an error while fetching appointments!');
+                        }
+                    },
+                    eventClick: function(info) {
+                        // Custom modal implementation here
+                        showAppointmentModal(info.event);
+                    },
+                    eventClassNames: 'fc-event-material',
+                    dayHeaderClassNames: 'fc-day-header-material',
+                    dayCellClassNames: 'fc-daygrid-day-material',
+                    initialDate: new Date(),
+                    navLinks: true,
+                    editable: true,
+                    selectable: true,
+                    selectMirror: true,
+                    dayMaxEvents: true,
+                    eventBackgroundColor: '#4CAF50',
+                    eventBorderColor: '#4CAF50',
+                    eventTextColor: '#ffffff',
+                    eventTimeFormat: {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        hour12: true
+                    }
+                });
+                calendar.render();
+            });
+
+            function showAppointmentModal(event) {
+                // Your custom modal implementation
+                console.log('Appointment:', event.title);
             }
-            },
-            eventClick: function(info) {
-            // Optionally load appointment details via AJAX into a modal
-            alert('Appointment ID: ' + info.event.id + '\n' + info.event.title);
-            }
-        });
-        calendar.render();
-        });
-    </script>
-
+        </script>
+    </div>
 
 </div>
+
 
 <?php include __DIR__ . '/../includes/footer.php'; ?>

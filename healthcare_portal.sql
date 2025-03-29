@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 26, 2025 at 02:28 PM
+-- Generation Time: Mar 28, 2025 at 05:41 PM
 -- Server version: 8.3.0
 -- PHP Version: 8.3.6
 
@@ -35,21 +35,24 @@ CREATE TABLE IF NOT EXISTS `appointments` (
   `appointment_date` date NOT NULL,
   `appointment_time` time NOT NULL,
   `status` enum('scheduled','completed','cancelled','no_show') DEFAULT 'scheduled',
+  `duration_minutes` int DEFAULT '30' COMMENT 'Appointment duration in minutes',
   `reason` text,
   `notes` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `patient_id` (`patient_id`),
   KEY `doctor_id` (`doctor_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `patient_id`, `doctor_id`, `appointment_date`, `appointment_time`, `status`, `reason`, `notes`, `created_at`) VALUES
-(1, 3, 2, '2025-03-26', '09:00:00', 'scheduled', 'Annual checkup', NULL, '2025-03-25 17:02:01'),
-(2, 3, 2, '2025-03-28', '14:30:00', 'scheduled', 'Follow-up on blood pressure', NULL, '2025-03-25 17:02:01');
+INSERT INTO `appointments` (`id`, `patient_id`, `doctor_id`, `appointment_date`, `appointment_time`, `status`, `duration_minutes`, `reason`, `notes`, `created_at`) VALUES
+(1, 3, 2, '2025-03-26', '09:00:00', 'cancelled', 30, 'Annual checkup', '\n2025-03-28 08:29:46 - Status changed to cancelled. Reason: no enough space', '2025-03-25 17:02:01'),
+(2, 3, 2, '2025-03-28', '14:30:00', 'completed', 30, 'Follow-up on blood pressure', NULL, '2025-03-25 17:02:01'),
+(5, 3, 2, '2025-03-31', '17:00:00', 'completed', 30, 'Tooth Ache', NULL, '2025-03-28 15:48:45'),
+(6, 3, 2, '2025-04-01', '10:00:00', 'cancelled', 30, 'Body Check Up', '\n2025-03-28 17:05:27 - Status changed to cancelled. Reason: not available', '2025-03-28 17:05:05');
 
 -- --------------------------------------------------------
 

@@ -1,6 +1,45 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    const currentPage = window.location.pathname.split('/').pop();
+  
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href').includes(currentPage)) {
+        link.classList.add('active');
+        link.innerHTML += '<span class="visually-hidden">(current)</span>';
+        }
+    });
+    
+
     // Doctor-specific functionality
     const appointmentItems = document.querySelectorAll('.appointment-item');
+
+    // Animate numbers when cards come into view
+    const counters = document.querySelectorAll('.font-weight-bolder');
+    const speed = 200;
+
+    counters.forEach(counter => {
+        const animate = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+            
+            if(count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(animate, 1);
+            } else {
+                counter.innerText = target;
+            }
+        }
+        
+        // Start animation when card is visible
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                animate();
+            }
+        });
+        
+        observer.observe(counter.parentElement.parentElement);
+    });
 
     // New appointment button
     document.getElementById('new-appointment-btn').addEventListener('click', function() {
@@ -96,8 +135,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     appointmentItems.forEach(item => {
         item.addEventListener('click', function(e) {
+            // Skip if clicking on dropdown or its children
+            if (e.target.closest('.profile-dropdown, .dropdown-menu')) return;
+            
             if (!e.target.closest('.appointment-actions')) {
-                alert('Appointment details would be shown here');
+                console.log('Appointment clicked'); // Debug instead of alert
+                // loadAppointmentModal(this.dataset.id); // Actual functionality
             }
         });
     });

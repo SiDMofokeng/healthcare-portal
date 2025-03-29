@@ -1,8 +1,3 @@
-.sidebar-nav a.active {
-    background: rgba(67, 97, 238, 0.1);
-    border-left: 3px solid var(--primary);
-  }
-
   @media (max-width: 768px) {
     .sidebar {
       transform: translateX(-100%);
@@ -236,9 +231,9 @@
   }
   
   .nav-item.active {
-    background: rgba(67, 97, 238, 0.2);
+    background: rgb(255, 255, 255);
     border-left: 3px solid #4361ee;
-    color: white;
+    color: #3a0ca3;
   }
   
   .nav-item i {

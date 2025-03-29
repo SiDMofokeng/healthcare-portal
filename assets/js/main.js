@@ -35,26 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.classList.remove('show');
     }
     });
-
-  if (profileTrigger && dropdownMenu) {
-    // Toggle dropdown
-    profileTrigger.addEventListener('click', function(e) {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('show');
-      
-      // Update aria-expanded
-      const isExpanded = dropdownMenu.classList.contains('show');
-      this.setAttribute('aria-expanded', isExpanded);
-    });
-
-    // Close when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.user-profile')) {
-        dropdownMenu.classList.remove('show');
-        profileTrigger.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
     
     if (sidebarToggle && sidebar) {
         sidebarToggle.addEventListener('click', function() {
@@ -147,15 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         notificationBtn.addEventListener('click', function() {
             // This would toggle a notification dropdown in a real implementation
             alert('Notifications dropdown would appear here');
-        });
-    }
-    
-    // User profile dropdown
-    const userProfile = document.querySelector('.user-profile');
-    if (userProfile) {
-        userProfile.addEventListener('click', function() {
-            // This would toggle a user dropdown in a real implementation
-            alert('User dropdown would appear here');
         });
     }
     
