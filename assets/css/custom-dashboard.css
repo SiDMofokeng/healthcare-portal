@@ -770,3 +770,15 @@
     background: #1A73E8;
     color: white;
 }
+
+#successAlert {
+    transition: opacity 0.5s ease-out;
+}
+
+#successMessage {
+    transition: opacity 0.5s ease;
+}
+
+.fade-out {
+    opacity: 0;
+}

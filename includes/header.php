@@ -187,7 +187,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
                     'patients.php' => ['icon' => 'procedures', 'label' => 'Patients'],
                     'prescriptions.php' => ['icon' => 'prescription', 'label' => 'Prescriptions'],
                     'medical_claims.php' => ['icon' => 'file-medical', 'label' => 'Medical Claims'],
-                    'profile.php' => ['icon' => 'user-cog', 'label' => 'Profile Settings']
+                    'settings.php' => ['icon' => 'user-cog', 'label' => 'Profile Settings']
                 ];
                 
                 foreach ($menu_items as $page => $item): 

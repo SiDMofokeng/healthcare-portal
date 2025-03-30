@@ -1,11 +1,13 @@
 <?php
-// Add this at the very top
 header('Content-Type: application/json');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
 
-// Enable error logging but don't display to users
-ini_set('display_errors', 0);
-ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/../../logs/php_errors.log');
+// Error reporting for debugging (remove in production)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../includes/auth_check.php';
@@ -19,7 +21,7 @@ $response = [
 
 try {
     // Validate input
-    if (empty($_POST['first_name']) {
+    if (empty($_POST['first_name'])) {
         throw new Exception("First name is required");
     }
     if (empty($_POST['last_name'])) {

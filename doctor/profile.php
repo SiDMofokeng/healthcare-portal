@@ -183,7 +183,7 @@ include __DIR__ . '/../includes/header.php';
                     </h6>
                 </div>
                 <div class="card-body">
-                    <form id="profileForm" action="../api/update_profile.php" method="POST" enctype="multipart/form-data">
+                    <form id="profileForm" action="/healthcare_portal/api/update_profile.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="role" value="<?= $_SESSION['role'] ?>">
                         
                         <div class="row">

@@ -24,9 +24,12 @@ document.getElementById('profileForm').addEventListener('submit', async function
     try {
         const formData = new FormData(form);
         
-        const response = await fetch(form.action, {
+        const response = await fetch('/healthcare_portal' + form.action, {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         });
 
         // First check if the response is JSON
@@ -107,9 +110,12 @@ document.getElementById('passwordForm').addEventListener('submit', function(e) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Updating...';
     
-    fetch(this.action, {
+    fetch('/healthcare_portal' + this.action, {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
     })
     .then(response => response.json())
     .then(data => {
@@ -161,9 +167,12 @@ function showAlert(message, type) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Updating...';
         
-        fetch(this.action, {
+        fetch('/healthcare_portal' + this.action, {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         })
         .then(response => response.json())
         .then(data => {
@@ -201,9 +210,12 @@ function showAlert(message, type) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Saving...';
         
-        fetch(this.action, {
+        fetch('/healthcare_portal' + this.action, {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         })
         .then(response => response.json())
         .then(data => {
